@@ -1,8 +1,504 @@
-* { 
-    transition: all .2s linear;
+@import "font";
+@import "reset";
+
+
+body {
+  font-family: arial, serif;
+  font-size: 1.13em;
+  font-weight: 300;
+  line-height: 1.52;
+  background-color: #fff;
+  text-rendering: optimizeLegibility;
+  color: rgba(51,51,51,0.8)
 }
 
-body { 
+.mke {
+  background: #fff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
+.editor,
+.preview {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.editor {
+  //background: #F2EFED;
+  position: relative;
+  font: 16px inconsolata;
+  margin-right: 20px;
+  overflow: hidden;
+
+  #editor {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.preview {
+  font-family: Lora, serif;
+  text-rendering: optimizeLegibility;
+
+  h1, h2, h3 {
+    color: rgba(51,51,51,0.9)
+  }
+
+  h1 {
+    margin: 0.4em 0 0
+  }
+
+  img {
+    display: block;
+    //width: 100%
+  }
+
+  a {
+    color: #3069D0;
+    text-decoration: none;
+    transition: all 0.1s linear
+  }
+
+  a:hover {
+    color: #3069D0;
+    text-decoration: underline
+  }
+
+  p {
+    margin-bottom: 1.52em
+  }
+
+  pre {
+    font-size: 0.7em;
+    overflow: auto;
     background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 0.25em;
+    margin-bottom: 1.8em;
+    padding: 1em
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 1em
+  }
+
+  h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.43;
+    margin-bottom: 1.35em
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.4em;
+    margin-top: 1.8em;
+    margin-bottom: 0.8em
+  }
+
+  ol,ul {
+    margin: 0 1.4em 1.4em 4em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  blockquote {
+    margin: 1.2em 3em;
+    padding-left: 1em;
+    font-style: italic;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    height: 0;
+    margin: 1.6em 0;
+  }
+
+}
+
+.footer {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 4px;
+  color: #444;
+  border-top: 1px solid #ddd;
+  display: none;
+}
+
+
+.ace-mou .ace-tm {
+  background-color: #fff;
+  color: #505050;
+}
+
+.ace-mou .ace-tm .ace_gutter {
+  background: #25282c;
+  color: #C5C8C6
+}
+
+.ace-mou .ace-tm .ace_print-margin {
+  width: 1px;
+  background: #25282c
+}
+
+.ace-mou .ace-tm .ace_cursor {
+  color: #AEAFAD
+}
+
+.ace-mou .ace-tm .ace_marker-layer .ace_selection {
+  background: #373B41
+}
+
+.ace-mou .ace-tm.ace_multiselect .ace_selection.ace_start {
+  box-shadow: 0 0 3px 0px #282a36;
+}
+
+.ace-mou .ace-tm .ace_marker-layer .ace_step {
+  background: rgb(102, 82, 0)
+}
+
+.ace-mou .ace-tm .ace_marker-layer .ace_bracket {
+  margin: -1px 0 0 -1px;
+  border: 1px solid #4B4E55
+}
+
+.ace-mou .ace-tm .ace_marker-layer .ace_active-line {
+  background: #eee;
+}
+
+.ace-mou .ace-tm .ace_gutter-active-line {
+  background-color: #282A2E
+}
+
+.ace-mou .ace-tm .ace_marker-layer .ace_selected-word {
+  border: 1px solid #373B41
+}
+
+.ace-mou .ace-tm .ace_invisible {
+  color: #4B4E55
+}
+
+.ace-mou .ace-tm .ace_keyword,
+.ace-mou .ace-tm .ace_meta,
+.ace-mou .ace-tm .ace_storage,
+.ace-mou .ace-tm .ace_storage.ace_type,
+.ace-mou .ace-tm .ace_support.ace_type {
+  color: #B294BB
+}
+
+.ace-mou .ace-tm .ace_keyword.ace_operator {
+  color: #8ABEB7
+}
+
+.ace-mou .ace-tm .ace_constant.ace_character,
+.ace-mou .ace-tm .ace_constant.ace_language,
+.ace-mou .ace-tm .ace_constant.ace_numeric,
+.ace-mou .ace-tm .ace_keyword.ace_other.ace_unit,
+.ace-mou .ace-tm .ace_support.ace_constant,
+.ace-mou .ace-tm .ace_variable.ace_parameter {
+  color: #DE935F
+}
+
+.ace-mou .ace-tm .ace_constant.ace_other {
+  color: #CED1CF
+}
+
+.ace-mou .ace-tm .ace_invalid {
+  color: #CED2CF;
+  background-color: #DF5F5F
+}
+
+.ace-mou .ace-tm .ace_invalid.ace_deprecated {
+  color: #CED2CF;
+  background-color: #B798BF
+}
+
+.ace-mou .ace-tm .ace_fold {
+  background-color: #81A2BE;
+  border-color: #C5C8C6
+}
+
+.ace-mou .ace-tm .ace_entity.ace_name.ace_function,
+.ace-mou .ace-tm .ace_support.ace_function,
+.ace-mou .ace-tm .ace_variable {
+  color: #81A2BE
+}
+
+.ace-mou .ace-tm .ace_support.ace_class,
+.ace-mou .ace-tm .ace_support.ace_type {
+  color: #F0C674
+}
+
+.ace-mou .ace-tm .ace_heading {
+  color: #6B70C3;
+}
+
+.ace-mou .ace-tm .ace_1,
+.ace-mou .ace-tm .ace_1+.ace_heading {
+  height: 40px;
+}
+
+.ace-mou .ace-tm .ace_4,
+.ace-mou .ace-tm .ace_4+.ace_heading,
+.ace-mou .ace-tm .ace_5,
+.ace-mou .ace-tm .ace_5+.ace_heading,
+.ace-mou .ace-tm .ace_6,
+.ace-mou .ace-tm .ace_6+.ace_heading {
+  color: #1F85CE;
+}
+
+
+.ace-mou .ace-tm .ace_heading,
+.ace-mou .ace-tm .ace_markup.ace_heading,
+.ace-mou .ace-tm .ace_string {
+  font-weight: bold;
+}
+
+.ace-mou .ace-tm .ace_markup.ace_heading.ace_1 {
+  font-weight: normal;
+}
+
+.ace-mou .ace-tm .ace_list {
+  color: #444;
+}
+
+.ace-mou .ace-tm .ace_markup.ace_list {
+  color: #7d80ce;
+}
+
+.ace-mou .ace-tm .ace_string,
+.ace-mou .ace-tm .ace_underline {
+  font-weight: normal;
+  color: #6E50B2;
+}
+
+.ace-mou .ace-tm .ace_string.ace_emphasis {
+  font-style: italic;
+}
+.ace-mou .ace-tm .ace_string.ace_emphasis,
+.ace-mou .ace-tm .ace_string.ace_strong {
+  font-weight: bold;
+  color: #E44547;
+}
+
+.ace-mou .ace-tm .ace_entity.ace_name.ace_tag,
+.ace-mou .ace-tm .ace_entity.ace_other.ace_attribute-name,
+.ace-mou .ace-tm .ace_meta.ace_tag,
+.ace-mou .ace-tm .ace_string.ace_regexp,
+.ace-mou .ace-tm .ace_variable {
+  color: #CC6666
+}
+
+.ace-mou .ace-tm .ace_comment {
+  color: #969896
+}
+
+.ace-mou .ace-tm .ace_indent-guide {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWNgYGBgYHB3d/8PAAOIAdULw8qMAAAAAElFTkSuQmCC) right repeat-y
+}
+
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+.tomorrow-comment, pre .comment, pre .title {
+  color: #8e908c;
+}
+
+.tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+  color: #c82829;
+}
+
+.tomorrow-orange, pre .number, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+  color: #f5871f;
+}
+
+.tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+  color: #eab700;
+}
+
+.tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+  color: #718c00;
+}
+
+.tomorrow-aqua, pre .css .hexcolor {
+  color: #3e999f;
+}
+
+.tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+  color: #4271ae;
+}
+
+.tomorrow-purple, pre .keyword, pre .javascript .function {
+  color: #8959a8;
+}
+
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #f0f0f0;
+    -webkit-text-size-adjust: none;
+}
+
+.hljs,
+.hljs-subst,
+.hljs-tag .hljs-title,
+.nginx .hljs-title {
+    color: black;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-constant,
+.hljs-parent,
+.hljs-tag .hljs-value,
+.hljs-rule .hljs-value,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-name,
+.haml .hljs-symbol,
+.ruby .hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.hljs-template_tag,
+.django .hljs-variable,
+.smalltalk .hljs-class,
+.hljs-addition,
+.hljs-flow,
+.hljs-stream,
+.bash .hljs-variable,
+.pf .hljs-variable,
+.apache .hljs-tag,
+.apache .hljs-cbracket,
+.tex .hljs-command,
+.tex .hljs-special,
+.erlang_repl .hljs-function_or_atom,
+.asciidoc .hljs-header,
+.markdown .hljs-header,
+.coffeescript .hljs-attribute,
+.tp .hljs-variable {
+    color: #800;
+}
+
+.smartquote,
+.hljs-comment,
+.hljs-annotation,
+.diff .hljs-header,
+.hljs-chunk,
+.asciidoc .hljs-blockquote,
+.markdown .hljs-blockquote {
+    color: #888;
+}
+
+.hljs-number,
+.hljs-date,
+.hljs-regexp,
+.hljs-literal,
+.hljs-hexcolor,
+.smalltalk .hljs-symbol,
+.smalltalk .hljs-char,
+.go .hljs-constant,
+.hljs-change,
+.lasso .hljs-variable,
+.makefile .hljs-variable,
+.asciidoc .hljs-bullet,
+.markdown .hljs-bullet,
+.asciidoc .hljs-link_url,
+.markdown .hljs-link_url {
+    color: #080;
+}
+
+.hljs-label,
+.ruby .hljs-string,
+.hljs-decorator,
+.hljs-filter .hljs-argument,
+.hljs-localvars,
+.hljs-array,
+.hljs-attr_selector,
+.hljs-important,
+.hljs-pseudo,
+.hljs-pi,
+.haml .hljs-bullet,
+.hljs-doctype,
+.hljs-deletion,
+.hljs-envvar,
+.hljs-shebang,
+.apache .hljs-sqbracket,
+.nginx .hljs-built_in,
+.tex .hljs-formula,
+.erlang_repl .hljs-reserved,
+.hljs-prompt,
+.asciidoc .hljs-link_label,
+.markdown .hljs-link_label,
+.vhdl .hljs-attribute,
+.clojure .hljs-attribute,
+.asciidoc .hljs-attribute,
+.lasso .hljs-attribute,
+.coffeescript .hljs-property,
+.hljs-phony {
+    color: #88f;
+}
+
+.hljs-keyword,
+.hljs-id,
+.hljs-title,
+.hljs-built_in,
+.css .hljs-tag,
+.hljs-doctag,
+.smalltalk .hljs-class,
+.hljs-winutils,
+.bash .hljs-variable,
+.pf .hljs-variable,
+.apache .hljs-tag,
+.hljs-type,
+.hljs-typename,
+.tex .hljs-command,
+.asciidoc .hljs-strong,
+.markdown .hljs-strong,
+.hljs-request,
+.hljs-status,
+.tp .hljs-data,
+.tp .hljs-io {
+    font-weight: bold;
+}
+
+.asciidoc .hljs-emphasis,
+.markdown .hljs-emphasis,
+.tp .hljs-units {
+    font-style: italic;
+}
+
+.nginx .hljs-built_in {
+    font-weight: normal;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.lasso .markup,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+    opacity: 0.5;
 }
 

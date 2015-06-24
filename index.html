@@ -1,16 +1,101 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://use.typekit.net/c/87daff/1w;inconsolata,2,XH2:F:n5;kepler-std,2,XZy:F:i4,XZv:F:i7,Xb8:F:n4,XZs:F:n7/d?3bb2a6e53c9684ffdc9a9bf1195b2a62fdf9449cb1c3f2f840a87b8879f401716e01a4caa08ea0595943472493bd2e58bc7e061f7db7849d0baf5b15d87c811c98df178077d040b161a3b333d298a564090273786eacd18542eedcfa7919977742fc751954c9abdc136fbdd3ae52bb4f084054a150368156ddafb26cc2ca20960789a0a4755df3bb4ad6a3160032b9936703be76627604760cf224e51395233188709545717d73350d908afc96">
     <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
+  </head>
+  <body>
 
-    <h1>GulpJS + Browserify (watchify) + Browser Sync FTW</h1>
-    <p>By <a href="https://github.com/franklinjavier/gulp-browserify-browserSync">@franklinjavier</a></p>
+    <div class="mke">
 
+      <div class="editor ace-mou">
+        <div id="editor" class="ace-mou">---
+# (GitHub-Flavored) Markdown Editor
+
+Basic useful feature list:
+
+ * Ctrl+S / Cmd+S to save the file
+ * Ctrl+Shift+S / Cmd+Shift+S to choose to save as Markdown or HTML
+ * Drag and drop a file into here to load it
+ * File contents are saved in the URL so you can share files
+
+
+I'm no good at writing sample / filler text, so go write something yourself.
+
+Look, a list!
+
+ * foo
+ * bar
+ * baz
+
+And here's some code! :+1:
+
+```javascript
+$(function(){
+  $('div').html('I am a div.');
+});
+```
+
+This is [on GitHub](https://github.com/jbt/markdown-editor) so let me know if I've b0rked it somewhere.
+
+
+Props to Mr. Doob and his [code editor](http://mrdoob.com/projects/code-editor/), from which
+the inspiration to this, and some handy implementation hints, came.
+
+### Stuff used to make this:
+
+ * [markdown-it](https://github.com/markdown-it/markdown-it) for Markdown parsing
+ * [CodeMirror](http://codemirror.net/) for the awesome syntax-highlighted editor
+ * [highlight.js](http://softwaremaniacs.org/soft/highlight/en/) for syntax highlighting in output code blocks
+ * [js-deflate](https://github.com/dankogai/js-deflate) for gzipping of data to make it fit in URLs
+    </div>
+      </div>
+
+      <div id="preview" class="preview">
+        <h1>Qual é o melhor OS?</h1>
+        <p>Síntese clichê: Não existe o melhor <a href="https://pt.wikipedia.org/wiki/Sistema_operativo">sistema operacional</a>.
+          É tudo uma questão de preferência.</p>
+        <p>O <a href="/tags/windows.html">Windows</a> é o mais popular, em grande parte devido
+          à acessibilidade das máquinas.
+          Uma das desvantagens é que as máquinas Windows
+          são enormes alvos de vírus e são mais propensas à pirataria,
+          mas isso pode ser evitado com um bom antivírus e antimalware.
+          Windows é uma escolha ideal se você faz edição de vídeo, joga, etc.</p>
+        <p><a href="/tags/osx.html">Mac OSX</a> é outro sistema operacional popular,
+          mas é muitas vezes evitado principalmente por causa do alto custo.
+          Mac OSX é muito utilizado por programadores, designers, arquitetos, etc.
+          A sincronização do Hardware e Software é 100% eficiente,
+          fora que o OS é minimalista e muito bonito.</p>
+        <p>Finalmente, o <a href="/tags/linux.html">Linux</a> é um dos menos populares (para usuários finais),
+          em contrapartida é o mais popular para servidores.
+          Desenvolvido pelo programador finlandês chamado Linus Torvalds,
+          o Linux é um sistema operacional de código aberto,
+          com muitas distribuições, evoluindo constantemente. </p>
+        <p>Há muitos outros sistemas operacionais, mas acabei de
+          descrever os três principais. Em última análise, o melhor
+          nesse caso se resume a preferência do usuário.</p>
+        <hr>
+        <h2 id="minha-stack">Minha stack</h2>
+        <p>Em casa uso <a href="https://www.archlinux.org/">Arch</a> (na empresa <a href="http://linuxmint.com/">Mint</a>), i3 como window manager,
+          Vim como editor e VMware c/ win7 para rodar programas como Photoshop, etc.</p>
+        <p>A quem interessar:</p>
+        <ol>
+          <li><a href="http://stackshare.io/franklinjavier">Stack completo</a></li>
+          <li><a href="https://github.com/franklinjavier/dotFiles">dotFiles</a></li>
+        </ol>
+      </div>
+
+      <footer class="footer">
+        <span class="stats">100 words</span>
+      </footer>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.9/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="//highlightjs.org/static/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.9/mode-markdown.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/main.js" type="text/javascript"></script>
 
-</body>
+  </body>
 </html>
