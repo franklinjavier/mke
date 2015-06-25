@@ -1,9 +1,4 @@
-var log = require('./log');
 var marked = require('./marked');
-
-log.info('Primeiro log');
-log.info('Segundo log');
-
 var editor = ace.edit('editor');
 var session = editor.getSession();
 var mkMode = ace.require("ace/mode/markdown").Mode;
