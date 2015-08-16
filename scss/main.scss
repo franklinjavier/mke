@@ -1,6 +1,16 @@
 @import "font";
 @import "reset";
 
+$primary-color: #3069D0;
+$secondary-color: #AE65D2;
+$background-color: #fff;
+$background-header-color: #F9F8F7;
+
+$text-color: #595C62;
+$text-h-color: rgba(51, 51, 51, 0.90);
+$border-color: #f0f0f0;
+$box-color: #fff;
+
 
 body {
   font-family: arial, serif;
@@ -14,36 +24,41 @@ body {
 
 .mke {
   background: #fff;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  //display: -webkit-flex;
+  //display: -ms-flexbox;
+  //display: flex;
   overflow: hidden;
 }
 
+.hide { display: none; }
+
 .editor,
 .preview {
-  position: relative;
-  overflow: hidden;
-  flex: 1;
+  //position: relative;
+  //overflow: hidden;
+  //flex: 1;
 }
 
 .editor {
   //background: #F2EFED;
-  position: relative;
+  //position: relative;
   font: 16px inconsolata;
-  margin-right: 20px;
-  overflow: hidden;
+  //margin-right: 20px;
+  //overflow: hidden;
 
   #editor {
-    width: 100%;
+    width: 40em;
     height: 100vh;
     overflow: hidden;
+    margin: 20px auto 0;
   }
 }
 
 .preview {
   font-family: Lora, serif;
   text-rendering: optimizeLegibility;
+  margin: 20px auto 0;
+  width: 34em;
 
   h1, h2, h3 {
     color: rgba(51,51,51,0.9)
@@ -70,29 +85,39 @@ body {
   }
 
   p {
-    margin-bottom: 1.52em
+    margin-bottom: 1.52em;
+    text-rendering: optimizeLegibility;
   }
 
   pre {
-    font-size: 0.7em;
+    font-size: 1em;
     overflow: auto;
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    border-radius: 0.25em;
+    background: $background-header-color;
+    border: 1px solid $border-color;
     margin-bottom: 1.8em;
-    padding: 1em
+    padding: 1em;
+    font-family: monospace;
   }
+
+  p code {
+    padding: 2px 4px;
+    font-size: 1.2em;
+    background: $background-header-color;
+    color: $secondary-color;
+  }
+
 
   h1 {
     font-size: 2em;
-    margin-bottom: 1em
+    margin-bottom: 1em;
+    font-weight: bold;
   }
 
   h2 {
     font-size: 1.2em;
     font-weight: 400;
     line-height: 1.43;
-    margin-bottom: 1.35em
+    margin-bottom: 1.35em;
   }
 
   h3 {
@@ -100,10 +125,10 @@ body {
     font-weight: 400;
     font-size: 1.4em;
     margin-top: 1.8em;
-    margin-bottom: 0.8em
+    margin-bottom: 0.8em;
   }
 
-  ol,ul {
+  ol, ul {
     margin: 0 1.4em 1.4em 4em;
   }
 
@@ -119,23 +144,33 @@ body {
 
   hr {
     border: 0;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid $border-color;
     height: 0;
     margin: 1.6em 0;
+    &:after {
+      content: '';
+      position: absolute;
+      background-color: #eee;
+      padding: 3px;
+      width: 2px;
+      height: 2px;
+      margin-left: 26%;
+      margin-top: -4px;
+      border-radius: 50%;
+    }
   }
+
 
 }
 
-.footer {
-  width: 100%;
-  background: #fff;
+.stats {
+  font: 12px arial;
+  background: $background-color;
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  right: 0;
   padding: 4px;
-  color: #444;
-  border-top: 1px solid #ddd;
-  display: none;
+  color: $text-h-color;
 }
 
 
@@ -159,7 +194,7 @@ body {
 }
 
 .ace-mou .ace-tm .ace_marker-layer .ace_selection {
-  background: #373B41
+  background: #f0f0f0
 }
 
 .ace-mou .ace-tm.ace_multiselect .ace_selection.ace_start {
@@ -176,11 +211,14 @@ body {
 }
 
 .ace-mou .ace-tm .ace_marker-layer .ace_active-line {
-  background: #eee;
+  background: transparent;
+  color: #000!important;
 }
 
 .ace-mou .ace-tm .ace_gutter-active-line {
-  background-color: #282A2E
+  background-color: #282A2E;
+  color: #f00;
+
 }
 
 .ace-mou .ace-tm .ace_marker-layer .ace_selected-word {
@@ -500,5 +538,143 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 .xml .css,
 .xml .hljs-cdata {
     opacity: 0.5;
+}
+
+
+pre {
+  font-size: 1em;
+  overflow: auto;
+  background: $background-header-color;
+  border: 1px solid $border-color;
+  margin-bottom: 1.8em;
+  padding: 1em;
+  font-family: monospace;
+}
+
+p code {
+  padding: 2px 4px;
+  font-size: 1.2em;
+  background: $background-header-color;
+  color: $secondary-color;
+}
+
+code.lang-markdown {
+  color: #424242;
+}
+
+code.lang-markdown .header,
+code.lang-markdown .strong {
+  font-weight: bold;
+}
+
+code.lang-markdown .emphasis {
+  font-style: italic;
+}
+
+code.lang-markdown .horizontal_rule,
+code.lang-markdown .link_label,
+code.lang-markdown .code,
+code.lang-markdown .header,
+code.lang-markdown .link_url {
+  color: #555;
+}
+
+code.lang-markdown .blockquote,
+code.lang-markdown .bullet {
+  color: #bbb;
+}
+
+
+/* Tomorrow Comment */
+.hljs-comment {
+  color: #8e908c;
+
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rule .hljs-attribute {
+  color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.hljs-name,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #718c00;
+}
+
+/* Tomorrow Aqua */
+.hljs-title,
+.css .hljs-hexcolor {
+  color: #3e999f;
+}
+
+/* Tomorrow Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #8959a8;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #000;
+  color: #4d4d4c;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
 }
 
