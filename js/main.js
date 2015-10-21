@@ -65,10 +65,10 @@ hljs.initHighlightingOnLoad();
 
 preview();
 
-$(document, editor.container).bind('keydown', 'ctrl+p', toggle);
+$(document, editor.container).bind('keydown', 'ctrl+m', toggle);
 editor.commands.addCommand({
   name: "toggle-preview",
-  bindKey: {win: "Ctrl-p", mac: "Ctrl-P"},
+  bindKey: {win: "Ctrl-m", mac: "Ctrl-M"},
   exec: function(editor) {
     toggle();
   }
